@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "tauri": "tauri",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "changelog": "auto-changelog -p && git add CHANGELOG.md"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
@@ -25,6 +26,7 @@
     "@tsconfig/svelte": "^5.0.0",
     "@types/dompurify": "^3.2.0",
     "@types/marked": "^6.0.0",
+    "auto-changelog": "^2.5.0",
     "bulma": "^1.0.4",
     "copy-to-clipboard": "^3.3.3",
     "dexie": "^4.0.11",
@@ -51,5 +53,9 @@
     "typescript": "<5.5",
     "uuid": "^11.1.0",
     "vite": "^4.5.14"
+  },
+  "auto-changelog": {
+    "unreleased": true,
+    "commitLimit": false
   }
 }
