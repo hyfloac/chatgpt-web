@@ -72,6 +72,7 @@
     pinTop: number;
     pinBottom: number;
     summaryPrompt: string;
+    titleGeneratorProfile: string;
     useSystemPrompt: boolean;
     systemPrompt: string;
     hideSystemPrompt: boolean;

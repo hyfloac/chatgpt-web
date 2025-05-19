@@ -102,6 +102,7 @@
     pinTop: 0,
     pinBottom: 6,
     summaryPrompt: '',
+    titleGeneratorProfile: 'titleGenerator',
     useSystemPrompt: false,
     systemPrompt: '',
     hideSystemPrompt: false,
@@ -282,6 +283,18 @@
     }
   ]
 
+  const titleGeneratorSettings: ChatSetting[] = [
+    {
+      key: 'titleGeneratorProfile',
+      name: 'Title Generator Profile',
+      title: 'Select the profile to use for generating titles.',
+      header: 'Title',
+      headerClass: 'is-info',
+      type: 'select',
+      options: []
+    }
+  ]
+
   const summarySettings: ChatSetting[] = [
     {
       key: 'continuousChat',
@@ -369,6 +382,7 @@
       type: 'textarea',
       hide: (chatId) => getChatSettings(chatId).continuousChat !== 'summary'
     },
+    ...titleGeneratorSettings,
     {
       key: 'imageGenerationModel',
       name: 'Image Generation Model',
