@@ -162,13 +162,13 @@
       <div class="field is-normal">
         <label class="label" for="settings-{setting.key}" title="{setting.title}">
           <input 
-          type="checkbox"
-          title="{setting.title}"
-          class="checkbox" 
-          id="settings-{setting.key}"
-          checked={!!chatSettings[setting.key]} 
-          on:click={e => queueSettingValueChange(e, setting)}
-        >
+            type="checkbox"
+            title="{setting.title}"
+            class="checkbox" 
+            id="settings-{setting.key}"
+            checked={!!chatSettings[setting.key]} 
+            on:click={e => queueSettingValueChange(e, setting)}
+          />
           {setting.name}
         </label>
       </div>
@@ -206,42 +206,42 @@
           />
         {:else if setting.type === 'select' || setting.type === 'select-number'}
           <!-- <div class="select"> -->
-            <div class="select" class:control={fieldControls.length}>
-              {#key rkey}
-                <select id="settings-{setting.key}" title="{setting.title}" on:change={e => queueSettingValueChange(e, setting) } >
-                  {#each setting.options as option}
-                    <option 
-                      class:is-default={option.value === chatDefaults[setting.key]} 
-                      value={option.value} 
-                      selected={option.value === chatSettings[setting.key]} 
-                      disabled={option.disabled}
-                    >
-                      {option.text}
-                    </option>
-                  {/each}
-                </select>
-              {/key}
+          <div class="select" class:control={fieldControls.length}>
+            {#key rkey}
+              <select id="settings-{setting.key}" title="{setting.title}" on:change={e => queueSettingValueChange(e, setting) } >
+                {#each setting.options as option}
+                  <option 
+                    class:is-default={option.value === chatDefaults[setting.key]} 
+                    value={option.value} 
+                    selected={option.value === chatSettings[setting.key]} 
+                    disabled={option.disabled}
+                  >
+                    {option.text}
+                  </option>
+                {/each}
+              </select>
+            {/key}
+          </div>
+          {#each fieldControls as cont}
+            <div class="control">
+              <button 
+                title={cont.text} 
+                on:click={() => { cont.action && cont.action(chatId, setting, chatSettings[setting.key]); refreshSettings() }} 
+                class="button {cont.class || ''}"
+              >
+                {#if cont.text}
+                  <span class="text">
+                    <Fa icon={cont.icon} />
+                  </span> 
+                {/if}
+                {#if cont.icon}
+                  <span class="icon">
+                    <Fa icon={cont.icon} />
+                  </span> 
+                {/if}
+              </button>
             </div>
-            {#each fieldControls as cont}
-              <div class="control">
-                <button 
-                  title={cont.text} 
-                  on:click={() => { cont.action && cont.action(chatId, setting, chatSettings[setting.key]); refreshSettings() }} 
-                  class="button {cont.class || ''}"
-                >
-                  {#if cont.text}
-                    <span class="text">
-                      <Fa icon={cont.icon} />
-                    </span> 
-                  {/if}
-                  {#if cont.icon}
-                    <span class="icon">
-                      <Fa icon={cont.icon} />
-                    </span> 
-                  {/if}
-                </button>
-              </div>
-            {/each}
+          {/each}
         {:else if setting.type === 'text'}
           <div class="field">
             <input 
