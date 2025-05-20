@@ -103,6 +103,8 @@
     pinBottom: 6,
     summaryPrompt: '',
     titleGeneratorProfile: 'titleGenerator',
+    useTitleGenerationPrompt: false,
+    titleGenerationPrompt: '',
     useSystemPrompt: false,
     systemPrompt: '',
     hideSystemPrompt: false,
@@ -292,6 +294,19 @@
       headerClass: 'is-info',
       type: 'select',
       options: []
+    },
+    {
+      key: 'useTitleGenerationPrompt',
+      name: 'Use Title Generation Prompt',
+      title: 'Whether to use a custom prompt for title generation.',
+      type: 'boolean'
+    },
+    {
+      key: 'titleGenerationPrompt',
+      name: 'Title Generation Prompt',
+      title: 'An alternate prompt to use for title generation. This should be set for profiles specifically created for title generation.',
+      type: 'textarea',
+      hide: (chatId) => !getChatSettings(chatId).useTitleGenerationPrompt
     }
   ]
 
